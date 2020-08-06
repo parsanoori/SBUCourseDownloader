@@ -119,10 +119,7 @@ for aTag in soup.findAll('a'):
     link = aTag.get('href')
     response: str = requests.get(link, verify=False).text
     mp4_rar_url: str
-    if 'ورود' in response:
-        mp4_rar_url = extract_mp4_rar_url(login(link, response))
-    else:
-        mp4_rar_url = extract_mp4_rar_url(response)
+    mp4_rar_url = extract_mp4_rar_url(login(link, response))
     if mp4_rar_url is not None:
         size = check_file_size(mp4_rar_url)
         print(current_folders_bytes_count / maximum_number_of_each_part)
